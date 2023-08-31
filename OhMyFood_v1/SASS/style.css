@@ -1,0 +1,259 @@
+:root {
+  --background: #F6F6F6;
+  --grey: #353535;
+  --grey-2: #EAEAEA;
+  --green: #99E2D0;
+  --green-font: #008766;
+  --blue: #89C8FA;
+  --blue-2: #003A68;
+  --primary: #9356DC;
+  --black: #101010;
+  --button-gradient: linear-gradient(175deg, #FF79DA 0%, #9356DC 100%);
+  --button-gradient-hover: linear-gradient(182deg, #9356DC 0%, #FF79DA 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+main,
+main *,
+header,
+header *,
+footer,
+footer * {
+  display: flex;
+}
+
+body {
+  flex-direction: column;
+  margin: 0 0 0 0;
+}
+body * {
+  font-family: "Roboto", sans-serif;
+  margin: 0 0 0 0;
+}
+body > *, body > * > *, body > * > * > * {
+  flex-direction: inherit;
+}
+body h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+body h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+body .title,
+body .fonctionnement-section,
+body .card {
+  background-color: #FFF;
+}
+body .explore-section,
+body .restaurants-section {
+  background-color: var(--background);
+}
+body input {
+  display: none;
+}
+
+header > * {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+header .title {
+  height: 63px;
+  font-family: "Shrikhand", cursive;
+  font-size: 1.875rem;
+  font-weight: 400;
+}
+header .location {
+  background-color: var(--grey-2);
+  font-size: 1rem;
+  height: 50px;
+  gap: 17px;
+}
+header .location .fa-location-dot,
+header .location .location-txt {
+  font-size: 1rem;
+}
+
+.explore-section {
+  align-items: center;
+  text-align: center;
+  padding: 32px 32px 48px;
+  gap: 16px;
+}
+.explore-section h2 {
+  padding: 0 24px;
+}
+.explore-section span {
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+.explore-section a {
+  background: var(--button-gradient);
+  border-radius: 25px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  padding: 16px;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.fonctionnement-section {
+  padding: 50px 20px 70px 30px;
+}
+.fonctionnement-section, .fonctionnement-section > * {
+  gap: 25px;
+}
+.fonctionnement-section .cartouche-fonctionnement, .fonctionnement-section > * .cartouche-fonctionnement {
+  background-color: var(--background);
+  border-radius: 20px;
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
+  padding: 28px 0;
+  gap: 23px;
+  align-items: center;
+}
+.fonctionnement-section .cartouche-fonctionnement > *, .fonctionnement-section > * .cartouche-fonctionnement > * {
+  position: relative;
+  right: 12px;
+}
+.fonctionnement-section .cartouche-fonctionnement .cartouche-number, .fonctionnement-section > * .cartouche-fonctionnement .cartouche-number {
+  height: 25px;
+  width: 25px;
+  position: relative;
+}
+.fonctionnement-section .cartouche-fonctionnement .cartouche-number p, .fonctionnement-section > * .cartouche-fonctionnement .cartouche-number p {
+  position: absolute;
+  inset: 4px auto auto 8px;
+  color: #FFF;
+  font-size: 14px;
+}
+
+.restaurants-section {
+  padding: 50px 18px 70px;
+  gap: 25px;
+}
+.restaurants-section .cards-block,
+.restaurants-section .cards-sub-block {
+  flex-direction: column;
+  gap: 20px;
+}
+.restaurants-section .cards-block .card,
+.restaurants-section .cards-sub-block .card {
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 15px;
+  height: 250px;
+}
+.restaurants-section .cards-block .card a,
+.restaurants-section .cards-sub-block .card a {
+  position: absolute;
+  inset: 0;
+}
+.restaurants-section .cards-block .card > img,
+.restaurants-section .cards-sub-block .card > img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px 15px 0 0;
+  height: 70%;
+}
+.restaurants-section .cards-block .card .img-1,
+.restaurants-section .cards-block .card .img-2,
+.restaurants-section .cards-sub-block .card .img-1,
+.restaurants-section .cards-sub-block .card .img-2 {
+  -o-object-position: 0 60%;
+     object-position: 0 60%;
+}
+.restaurants-section .cards-block .card .img-3,
+.restaurants-section .cards-block .card .img-4,
+.restaurants-section .cards-sub-block .card .img-3,
+.restaurants-section .cards-sub-block .card .img-4 {
+  -o-object-position: 0 70%;
+     object-position: 0 70%;
+}
+.restaurants-section .cards-block .card .badge-nouveau,
+.restaurants-section .cards-sub-block .card .badge-nouveau {
+  position: absolute;
+  background-color: var(--green);
+  color: var(--green-font);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  inset: 13px 12px auto auto;
+}
+.restaurants-section .cards-block .card .card-txt-block,
+.restaurants-section .cards-sub-block .card .card-txt-block {
+  position: relative;
+  padding: 0 0 12px 13px;
+  flex-direction: column;
+  gap: 5px;
+}
+.restaurants-section .cards-block .card .card-txt-block p,
+.restaurants-section .cards-sub-block .card .card-txt-block p {
+  font-size: 1.0625rem;
+  font-weight: 300;
+}
+.restaurants-section .cards-block .card .checkbox-label,
+.restaurants-section .cards-sub-block .card .checkbox-label {
+  position: absolute;
+  right: 25px;
+  bottom: 33px;
+}
+.restaurants-section .cards-block .card .checkbox-label .status-default,
+.restaurants-section .cards-sub-block .card .checkbox-label .status-default {
+  position: absolute;
+  opacity: 1;
+}
+.restaurants-section .cards-block .card .checkbox-label .status-liked,
+.restaurants-section .cards-sub-block .card .checkbox-label .status-liked {
+  opacity: 0;
+}
+
+footer {
+  background-color: var(--grey);
+  color: #FFF;
+  padding: 22px 25px;
+  gap: 16px;
+}
+footer .footer-logo p {
+  font-family: "Shrikhand", cursive;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+footer .links-block {
+  gap: 7px;
+}
+footer .links-block > * {
+  flex-direction: row;
+  gap: 11px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1rem;
+}
+footer .mentions-contact {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  font-weight: 300;
+}
+
+.explore-section a {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.explore-section a:hover {
+  opacity: 0.85;
+  box-shadow: 0px 4px 10px 4px rgba(0, 0, 0, 0.25);
+}
+
+.card .checkbox-label input[type=checkbox]:checked ~ .status-default {
+  opacity: 0;
+}
+.card .checkbox-label input[type=checkbox]:checked ~ .status-liked {
+  opacity: 1;
+}/*# sourceMappingURL=style.css.map */
