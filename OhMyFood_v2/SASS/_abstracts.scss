@@ -1,0 +1,38 @@
+@mixin flex($direction) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin center-h-v {
+    justify-content: center;
+    align-items: center;
+}
+
+:root {
+
+    --background: #F6F6F6;
+    --grey: #353535;
+    --grey-2: #EAEAEA;
+    --green: #99E2D0;
+    --green-font: #008766;
+    --blue: #89C8FA;
+    --blue-2: #003A68;
+    --primary: #9356DC;
+    --black: #101010;
+    --button-gradient: linear-gradient(175deg, #FF79DA 0%, #9356DC 100%);
+    --button-gradient-hover: linear-gradient(182deg, #9356DC 0%, #FF79DA 100%);
+    --heart-gradient: linear-gradient(175deg, #9356DC 0%, #FF79DA 100%);
+
+    --heart-size: 1.5rem;
+
+    %pink-btn {
+        background: var(--button-gradient);
+        border-radius: 25px;
+        box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+        color: #FFF;
+        font-weight: 500;
+        padding: 16px;
+        text-decoration: none;
+        width: fit-content;
+    }
+}
