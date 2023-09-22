@@ -17,6 +17,28 @@ const slides = [
 	}
 ]
 
+
+// ********** Ajout des arrow ************
+
+
+const banner = document.getElementById('banner')
+
+const leftArrow = document.createElement('img')
+const rightArrow = document.createElement('img')
+
+banner.insertBefore(leftArrow, banner.querySelector('p'))
+banner.insertBefore(rightArrow, banner.querySelector('p'))
+
+leftArrow.classList.add('arrow', 'arrow_left')
+rightArrow.classList.add('arrow', 'arrow_right')
+
+leftArrow.src = './assets/images/arrow_left.png'
+rightArrow.src = './assets/images/arrow_right.png'
+
+leftArrow.alt = 'Banner Arrow-left'
+rightArrow.alt = 'Banner Arrow-right'
+
+
 // ********** Ajout des dots ************
 
 const dotsDiv = document.querySelector('.dots');
