@@ -15,28 +15,25 @@ const slides = [
 		"image": "slide4.png",
 		"tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
 	}
-]
+];
 
 
 // ********** Ajout des arrow ************
 
 
-const banner = document.getElementById('banner')
+const banner = document.getElementById('banner');
+const leftArrow = document.createElement('img');
+const rightArrow = document.createElement('img');
 
-const leftArrow = document.createElement('img')
-const rightArrow = document.createElement('img')
+banner.insertBefore(leftArrow, banner.querySelector('p'));
+banner.insertBefore(rightArrow, banner.querySelector('p'));
 
-banner.insertBefore(leftArrow, banner.querySelector('p'))
-banner.insertBefore(rightArrow, banner.querySelector('p'))
-
-leftArrow.classList.add('arrow', 'arrow_left')
-rightArrow.classList.add('arrow', 'arrow_right')
-
-leftArrow.src = './assets/images/arrow_left.png'
-rightArrow.src = './assets/images/arrow_right.png'
-
-leftArrow.alt = 'Banner Arrow-left'
-rightArrow.alt = 'Banner Arrow-right'
+leftArrow.classList.add('arrow', 'arrow_left');
+rightArrow.classList.add('arrow', 'arrow_right');
+leftArrow.src = './assets/images/arrow_left.png';
+rightArrow.src = './assets/images/arrow_right.png';
+leftArrow.alt = 'Banner Arrow-left';
+rightArrow.alt = 'Banner Arrow-right';
 
 
 // ********** Ajout des dots ************
@@ -44,41 +41,45 @@ rightArrow.alt = 'Banner Arrow-right'
 const dotsDiv = document.querySelector('.dots');
 
 for (let i = 1; i <= slides.length; i++) {
-	const dot = document.createElement('span')
-	dot.classList.add('dot', `dot_${i}`)
+	const dot = document.createElement('span');
+	dot.classList.add('dot', `dot_${i}`);
 	if (i === 1) {
-		dot.classList.add('dot_selected')
+		dot.classList.add('dot_selected');
 	}
-	dotsDiv.appendChild(dot)
+	dotsDiv.appendChild(dot);
 };
 
 
-// ********** EventsListeners ************
+// ********** Carroussel ************
 
 
 const arrows = document.querySelectorAll('.arrow');
+const imgCurrent = document.querySelector('.banner-img');
+const imgText = document.querySelector('#banner p');
+
+let dotCurrent = document.querySelector('.dot_selected');
+let dotCurrentIndex = Array.from(dotsDiv.children).indexOf(dotCurrent);
+
+function updateDots(arrow) {
+	if (arrow.classList.contains('arrow_left')) {
+		dotCurrentIndex = (dotCurrentIndex - 1 + slides.length) % slides.length;
+	}
+	if (arrow.classList.contains('arrow_right')) {
+		dotCurrentIndex = (dotCurrentIndex + 1) % slides.length;
+	}
+}
+
+function updateUI() {
+	dotCurrent.classList.remove('dot_selected');
+	dotsDiv.children[dotCurrentIndex].classList.add('dot_selected');
+	dotCurrent = document.querySelector('.dot_selected');
+	imgCurrent.src = `./assets/images/slideshow/${slides[dotCurrentIndex].image}`;
+	imgText.innerHTML = slides[dotCurrentIndex].tagLine;
+}
 
 arrows.forEach(arrow => {
-	arrow.addEventListener('click', event => {
-		const imgCurrent = document.querySelector('.banner-img')
-		const imgText = document.querySelector('#banner p')
-		const dotCurrent = document.querySelector('.dot_selected');
-		let dotIndex = Array.from(dotsDiv.children).indexOf(dotCurrent)
-		if (arrow.classList.contains('arrow_left')) {
-			if (dotIndex === 0) {
-				dotIndex = slides.length
-			}
-			dotIndex--
-		}
-		if (arrow.classList.contains('arrow_right')) {
-			if (dotIndex === 3) {
-				dotIndex = -1
-			}
-			dotIndex++
-		}
-		dotCurrent.classList.remove('dot_selected')
-		dotsDiv.children[dotIndex].classList.add('dot_selected')
-		imgCurrent.src = `./assets/images/slideshow/${slides[dotIndex].image}`
-		imgText.innerHTML = slides[dotIndex].tagLine
-	})
+	arrow.addEventListener('click', () => {
+		updateDots(arrow);
+		updateUI();
+	});
 });
