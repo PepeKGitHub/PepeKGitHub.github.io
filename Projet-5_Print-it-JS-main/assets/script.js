@@ -39,13 +39,19 @@ rightArrow.alt = 'Banner Arrow-right';
 // ********** Ajout des dots ************
 
 const dotsDiv = document.querySelector('.dots');
+let dot;
 
-for (let i = 1; i <= slides.length; i++) {
-	const dot = document.createElement('span');
-	dot.classList.add('dot', `dot_${i}`);
-	if (i === 1) {
+for (let i = 0; i < slides.length; i++) {
+	dot = document.createElement('span');
+	dot.classList.add('dot', `dot_${i + 1}`);
+	dot.dataset.slideArray = i;
+	if (i === 0) {
 		dot.classList.add('dot_selected');
 	}
+	dot.addEventListener('click', (event) => {
+		let dotIndex = event.target.dataset.slideArray;
+		updateUI(dotIndex);
+	});
 	dotsDiv.appendChild(dot);
 };
 
@@ -69,7 +75,7 @@ function updateDots(arrow) {
 	}
 }
 
-function updateUI() {
+function updateUI(dotCurrentIndex) {
 	dotCurrent.classList.remove('dot_selected');
 	dotsDiv.children[dotCurrentIndex].classList.add('dot_selected');
 	dotCurrent = document.querySelector('.dot_selected');
@@ -80,6 +86,6 @@ function updateUI() {
 arrows.forEach(arrow => {
 	arrow.addEventListener('click', () => {
 		updateDots(arrow);
-		updateUI();
+		updateUI(dotCurrentIndex);
 	});
 });
